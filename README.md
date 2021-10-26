@@ -4,7 +4,7 @@ Some simple sensors / actors with LPC812
  using mbed2
  
  
-How to compile:
+How to compile:  
  the old mbed sources are included, you need  
 - an  arm-none-eabi-gcc toolchain
 - mbed pyton tools : 'pip install mbed-cli"
