@@ -15,7 +15,7 @@
 //****************************************************************************************************************
 //**** IMPORTANT RADIO SETTINGS - YOU MUST CHANGE/CONFIGURE TO MATCH YOUR HARDWARE TRANSCEIVER CONFIGURATION! ****
 //****************************************************************************************************************
-#define NODEID         40                   //unique for each node on same network
+#define NODEID         32                   //unique for each node on same network
 #define NETWORKID     100  	                //the same on all nodes that talk to each other
 #if __has_include("credentials.h")
 #	include <credentials.h>
@@ -178,7 +178,7 @@ int main() {
         bool lowPower = !acmp.read();
         if (lowPower) {
             wait_ms(50);
-            rfm.sendWithRetry(1, msgLowPower, strlen(msgLowPower), 3, 1000L);
+            rfm.send(1, msgLowPower, strlen(msgLowPower));
         }
     }
 #endif
@@ -193,7 +193,7 @@ int main() {
             wait_us(50);
 
             //WakeUp::calibrate();
-            WakeUp::set(30);                // set wakeup time to 10 s
+            WakeUp::set(60);                // set wakeup time to 90 s
             WakeUp::deepPowerDown();        // cpu standby
             // after wakeup, a reset is performed
         }
