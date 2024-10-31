@@ -10,7 +10,7 @@
 #include "acmp.h"
 #include "json.h"
 #include "Relay.h"
-#include "sht31.h"
+#include "sht15.h"
 
 //****************************************************************************************************************
 //**** IMPORTANT RADIO SETTINGS - YOU MUST CHANGE/CONFIGURE TO MATCH YOUR HARDWARE TRANSCEIVER CONFIGURATION! ****
@@ -36,8 +36,8 @@ ACMP acmp(ACMP::LADDER, ACMP::BANDGAP, ACMP::NONE, 11);
 SPI     spi(P0_9, P0_1, P0_15);		// init SPI: mosi, miso, sck, ss
 RFM69   rfm(spi, P0_8, P0_16);
 
-//Sht31   shtSensor(P0_14, P0_7);
-//SHTx::SHT15 shtSensor(P0_7, P0_6);
+// Sht31   shtSensor(P0_14, P0_7);
+SHTx::SHT15 shtSensor(P0_7, P0_6);
 
 //Json json(10);		// Json object for received messages
 
@@ -128,7 +128,7 @@ int main() {
     char msg[64];
 
     // test blinky
-    //if (!WakeUp::wokeUpFromDeepSleep()) {
+    if (!WakeUp::wokeUpFromDeepSleep()) {
         ledRed = LED_ON;
         wait_ms(50);
         ledRed = LED_OFF;
@@ -136,12 +136,7 @@ int main() {
         ledRed = LED_ON;
         wait_ms(50);
         ledRed = LED_OFF;
-
-        while(1){
-            rfm.send(1, msgHello, strlen(msgHello));
-            wait_ms(5000);
-        }
-   // }
+   }
     WakeUp::clearDeepPowerDownFlag();
     WakeUp::set_ms(0);
 
@@ -158,12 +153,20 @@ int main() {
     rfm.encrypt(ENCRYPTKEY);
     rfm.promiscuous(false);
 
+#if 0
+    while(1){
+        rfm.send(1, msgHello, strlen(msgHello));
+        wait_ms(5000);
+    }
+#endif
+
     // configure sht temperature sensor
 
     // send temperature and humidity
     {
-        // int t = (int) (shtSensor.readTemperature() * 100.0f);
-        // int h = (int) (shtSensor.readHumidity() * 100.0f);
+        shtSensor.update();
+        int t = (int) (shtSensor.getTemperature() * 100.0f);
+        int h = (int) (shtSensor.getHumidity() * 100.0f);
 
         strcpy(msg, msgTemperature);
         itoa_dec(t, &msg[18]);
