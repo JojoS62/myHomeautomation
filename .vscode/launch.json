@@ -1,0 +1,173 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "./BUILD/SHT15Sensor/SHT15Sensor.elf",
+            "name": "debug JLink",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "jlink",
+            "device": "LPC812",
+            "serverArgs": [
+                 "-gui"
+            ],
+            "serverpath": "c:/Program Files/SEGGER/JLink/JLinkGDBServerCL.exe"
+"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "debug COM12",
+            "BMPGDBSerialPort": "//./COM12",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "device": "STM32F407VE",
+            "executable": "../../BUILD/${workspaceFolderBasename}/DEBUG/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "release COM12",
+            "BMPGDBSerialPort": "//./COM12",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "device": "STM32F407VE",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Release/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "develop COM12",
+            "BMPGDBSerialPort": "//./COM12",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "device": "STM32F407VE",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Develop/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "release COM5",
+            "BMPGDBSerialPort": "//./COM5",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Release/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "develop COM5",
+            "BMPGDBSerialPort": "//./COM5",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Develop/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "debug COM5",
+            "BMPGDBSerialPort": "//./COM5",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Debug/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "release COM6",
+            "BMPGDBSerialPort": "//./COM6",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Release/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "develop COM6",
+            "BMPGDBSerialPort": "//./COM6",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Develop/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "debug COM6",
+            "BMPGDBSerialPort": "//./COM6",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Debug/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "debug COM4",
+            "BMPGDBSerialPort": "//./COM4",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Debug/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "release TCP",
+            "BMPGDBSerialPort": "192.168.100.97:2000",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Release/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "develop TCP",
+            "BMPGDBSerialPort": "192.168.100.97:2000",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Develop/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "debug TCP",
+            "BMPGDBSerialPort": "192.168.100.97:2000",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Debug/${workspaceFolderBasename}.elf",
+            "preLaunchCommands": ["info target"]
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "debug ESP32",
+            "BMPGDBSerialPort": "192.168.100.102:2345",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Debug/${workspaceFolderBasename}.elf"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "name": "debug COM8",
+            "BMPGDBSerialPort": "//./COM8",
+            "interface": "swd",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "bmp",
+            "executable": "../../BUILD/${workspaceFolderBasename}/Debug/${workspaceFolderBasename}.elf"
+        }
+   ]
+}
