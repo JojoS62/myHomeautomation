@@ -15,7 +15,7 @@
 //****************************************************************************************************************
 //**** IMPORTANT RADIO SETTINGS - YOU MUST CHANGE/CONFIGURE TO MATCH YOUR HARDWARE TRANSCEIVER CONFIGURATION! ****
 //****************************************************************************************************************
-#define NODEID         32                   //unique for each node on same network
+#define NODEID         31                   //unique for each node on same network
 #define NETWORKID     100  	                //the same on all nodes that talk to each other
 #if __has_include("credentials.h")
 #	include <credentials.h>
@@ -36,7 +36,7 @@ ACMP acmp(ACMP::LADDER, ACMP::BANDGAP, ACMP::NONE, 11);
 SPI     spi(P0_9, P0_1, P0_15);		// init SPI: mosi, miso, sck, ss
 RFM69   rfm(spi, P0_8, P0_16);
 
-Sht31   shtSensor(P0_14, P0_7);
+//Sht31   shtSensor(P0_14, P0_7);
 //SHTx::SHT15 shtSensor(P0_7, P0_6);
 
 //Json json(10);		// Json object for received messages
@@ -128,7 +128,7 @@ int main() {
     char msg[64];
 
     // test blinky
-    if (!WakeUp::wokeUpFromDeepSleep()) {
+    //if (!WakeUp::wokeUpFromDeepSleep()) {
         ledRed = LED_ON;
         wait_ms(50);
         ledRed = LED_OFF;
@@ -136,7 +136,12 @@ int main() {
         ledRed = LED_ON;
         wait_ms(50);
         ledRed = LED_OFF;
-    }
+
+        while(1){
+            rfm.send(1, msgHello, strlen(msgHello));
+            wait_ms(5000);
+        }
+   // }
     WakeUp::clearDeepPowerDownFlag();
     WakeUp::set_ms(0);
 
@@ -157,8 +162,8 @@ int main() {
 
     // send temperature and humidity
     {
-        int t = (int) (shtSensor.readTemperature() * 100.0f);
-        int h = (int) (shtSensor.readHumidity() * 100.0f);
+        // int t = (int) (shtSensor.readTemperature() * 100.0f);
+        // int h = (int) (shtSensor.readHumidity() * 100.0f);
 
         strcpy(msg, msgTemperature);
         itoa_dec(t, &msg[18]);
