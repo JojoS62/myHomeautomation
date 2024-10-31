@@ -60,6 +60,15 @@
             "args": ["compile", "--profile", "release", "--source", "Apps/SHT31Sensor", "--source",  "Libs", "--source", "mbed", "--build", "BUILD/SHT31Sensor"]
         },
         {
+            "label": "compile SHT15Sensor",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "mbed",
+            "args": ["compile", "--profile", "release", "--source", "Apps/SHT15Sensor", "--source",  "Libs", "--source", "mbed", "--build", "BUILD/SHT15Sensor"]
+        },
+        {
             "label": "compile YACMSSensor",
             "group": {
                 "kind": "build",
