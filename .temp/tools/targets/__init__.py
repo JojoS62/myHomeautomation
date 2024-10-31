@@ -24,10 +24,14 @@ import inspect
 import sys
 from copy import copy
 from inspect import getmro
-from collections import namedtuple, Mapping
+from collections import namedtuple
 from tools.targets.LPC import patch
 from tools.paths import TOOLS_BOOTLOADERS
 from tools.utils import json_file_to_dict
+try:
+    from collections.abc import Mapping
+except ImportError:
+    from collections import Mappingfrom 
 
 __all__ = ["target", "TARGETS", "TARGET_MAP", "TARGET_NAMES", "CORE_LABELS",
            "CORE_ARCH", "HookError", "generate_py_target", "Target",
