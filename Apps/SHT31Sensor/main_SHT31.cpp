@@ -36,8 +36,8 @@ ACMP acmp(ACMP::LADDER, ACMP::BANDGAP, ACMP::NONE, 11);
 SPI     spi(P0_9, P0_1, P0_15);		// init SPI: mosi, miso, sck, ss
 RFM69   rfm(spi, P0_8, P0_16);
 
-//Sht31   shtSensor(P0_14, P0_7);
-SHTx::SHT15 shtSensor(P0_7, P0_6);
+Sht31   shtSensor(P0_14, P0_7);
+//SHTx::SHT15 shtSensor(P0_7, P0_6);
 
 //Json json(10);		// Json object for received messages
 
